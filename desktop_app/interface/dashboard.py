@@ -1,5 +1,3 @@
-from typing import Self
-
 import customtkinter as ctk
 
 from config import UPDATE_INTERVAL, WINDOW_TITLE, WINDOW_GEOMETRY
@@ -42,22 +40,22 @@ class Dashboard:
         self.ram_progress_bar.pack(padx=10, pady=5)
         self.cpu_progres_bar.pack(padx=10, pady=5)
 
-        def update_metrics():
-            data_to_update = self.monitor.get_data()
+        self.update_metrics()
 
-            self.cpu_label.configure(
-                text=f"CPU: {data_to_update["cpu"]}%\n"
-            )
+    def update_metrics(self):
+        data_to_update = self.monitor.get_data()
 
-            self.cpu_progres_bar.set(data_to_update["cpu"] / 100)
+        self.cpu_label.configure(
+            text=f"CPU: {data_to_update["cpu"]}%\n"
+        )
 
-            self.ram_label.configure(
-                text=f"RAM: {data_to_update["ram_percent"]}%\n"
-                     f"RAM: {data_to_update["ram_total_gb"]} GB"
-            )
+        self.cpu_progres_bar.set(data_to_update["cpu"] / 100)
 
-            self.ram_progress_bar.set(data_to_update["ram_percent"] / 100)
+        self.ram_label.configure(
+            text=f"RAM: {data_to_update["ram_percent"]}%\n"
+                 f"RAM: {data_to_update["ram_total_gb"]} GB"
+        )
 
-            self.app.after(UPDATE_INTERVAL, update_metrics)
+        self.ram_progress_bar.set(data_to_update["ram_percent"] / 100)
 
-        update_metrics()
+        self.app.after(UPDATE_INTERVAL, self.update_metrics)
