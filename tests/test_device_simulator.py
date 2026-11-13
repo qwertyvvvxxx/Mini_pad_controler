@@ -1,6 +1,6 @@
 import pytest
 
-from desktop_app.device_simulator import DeviceSimulator, Screen
+from desktop_app.device.device_simulator import DeviceSimulator, Screen
 
 
 @pytest.fixture
@@ -9,11 +9,11 @@ def device():
     return device
 
 def test_go_home(device):
-    assert device.go_home() == "Current screen: HOME"
+    assert device.go_home() == "HOME"
 
 def test_switch_screen(device):
-    assert device.switch_screen(Screen.MENU) == "Current screen: MENU"
-    assert device.switch_screen(Screen.SYSTEM) == "Current screen: SYSTEM"
-    assert device.switch_screen(Screen.APPS) == "Current screen: APPS"
+    assert device.switch_screen(Screen.MENU) == "MENU"
+    assert device.switch_screen(Screen.SYSTEM) == "SYSTEM"
+    assert device.switch_screen(Screen.APPS) == "APPS"
 
 

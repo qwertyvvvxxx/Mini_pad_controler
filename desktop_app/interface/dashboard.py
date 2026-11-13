@@ -1,7 +1,7 @@
 import customtkinter as ctk
 
 from config import UPDATE_INTERVAL, WINDOW_TITLE, WINDOW_GEOMETRY
-from desktop_app.device_simulator import Screen
+from desktop_app.device.device_simulator import Screen
 
 
 class Dashboard:

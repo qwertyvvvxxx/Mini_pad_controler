@@ -1,6 +1,6 @@
 import customtkinter as ctk
 
-from desktop_app.device_simulator import DeviceSimulator
+from desktop_app.device.device_simulator import DeviceSimulator
 from desktop_app.interface.dashboard import Dashboard
 from desktop_app.monitoring.system_monitor import SystemMonitor
 from config import APPEARANCE_MODE, COLOR_THEME
