@@ -17,18 +17,8 @@ class DeviceSimulator:
         return f"Current screen: {self.current_screen.value}"
 
     def switch_screen(self, target_screen):
-        match target_screen:
-            case Screen.HOME:
-                return self.go_home()
-            case Screen.MENU:
-                self.current_screen = Screen.MENU
-                return f"Current screen: {self.current_screen.value}"
-            case Screen.SYSTEM:
-                self.current_screen = Screen.SYSTEM
-                return f"Current screen: {self.current_screen.value}"
-            case Screen.APPS:
-                self.current_screen = Screen.APPS
-                return f"Current screen: {self.current_screen.value}"
-            case _:
-                self.current_screen = Screen.HOME
-                return f"Current screen: {self.current_screen.value}"
+        if target_screen == Screen.HOME:
+            return self.go_home()
+        elif target_screen in [Screen.MENU, Screen.SYSTEM, Screen.APPS]:
+            self.current_screen = target_screen
+            return f"Current screen: {self.current_screen.value}"
